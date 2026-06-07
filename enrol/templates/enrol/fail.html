@@ -1,0 +1,9 @@
+{% extends 'enrol/base.html' %}
+{% block content %}
+<h3>Failed Students(grade<60)</h3>
+<ul>
+{% for item in fail_list %}
+<li>{{item.student.username}} | {{item.course.name}} | Score:{{item.grade}}</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'enrol/base.html' %}
+{% block content %}
+<h3>Students(start with p)</h3>
+<ul>
+{% for s in students %}
+<li><a href="{% url 'student_detail' s.pk %}">{{s.username}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

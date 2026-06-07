@@ -1,0 +1,9 @@
+{% extends 'enrol/base.html' %}
+{% block content %}
+<h3>All Courses</h3>
+<ul>
+{% for c in courses %}
+<li><a href="{% url 'course_detail' c.pk %}">{{c.name}} - {{c.year}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

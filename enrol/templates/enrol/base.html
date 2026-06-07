@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block title %}<title>COMP2115 Enrol System</title>{% endblock %}
+</head>
+<body>
+{% block sidebar %}
+<ul>
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="{% url 'course_list' %}">All courses</a></li>
+<li><a href="{% url 'student_list' %}">All students</a></li>
+<li><a href="{% url 'fail' %}">Failed Students</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}{% endblock %}
+</body>
+</html>
