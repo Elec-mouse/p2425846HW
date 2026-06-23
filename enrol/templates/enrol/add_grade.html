@@ -1,0 +1,35 @@
+{% extends 'enrol/base.html' %}
+{% block content %}
+<h3>Add / Update Grade</h3>
+
+{% if messages %}
+  {% for msg in messages %}
+    <p style="color:green;">{{ msg }}</p>
+  {% endfor %}
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  <p>
+    <label>Student:</label>
+    <select name="student_id">
+      {% for s in students %}
+        <option value="{{ s.pk }}">{{ s.username }}</option>
+      {% endfor %}
+    </select>
+  </p>
+  <p>
+    <label>Course:</label>
+    <select name="course_id">
+      {% for c in courses %}
+        <option value="{{ c.pk }}">{{ c.name }} ({{ c.year }})</option>
+      {% endfor %}
+    </select>
+  </p>
+  <p>
+    <label>Grade (0-100):</label>
+    <input type="number" name="grade" min="0" max="100" required>
+  </p>
+  <button type="submit">Save Grade</button>
+</form>
+{% endblock %}

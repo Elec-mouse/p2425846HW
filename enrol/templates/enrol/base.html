@@ -13,9 +13,24 @@
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'course_list' %}">All courses</a></li>
-            <li><a href="{% url 'student_list' %}">All students</a></li>
-            <li><a href="{% url 'fail' %}">Failed Students</a></li>
-            <li><a href="/admin/">Admin</a></li>
+
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li><a href="{% url 'student_list' %}">All students</a></li>
+                {% else %}
+                    <li><a href="{% url 'my_grade' %}">My grade</a></li>
+                {% endif %}
+                <li class="user-info">{{ user.username }}</li>
+                <li>
+                  <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="link-button">Logout</button>
+                  </form>
+                </li>
+                <li><a href="{% url 'password_change' %}">Change password</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
     {% endblock %}

@@ -8,5 +8,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('enrol/', include('enrol.urls')),
     path('', RedirectView.as_view(url='/enrol/')),
+    path('accounts/', include('django.contrib.auth.urls')),
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]

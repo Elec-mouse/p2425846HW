@@ -1,10 +1,16 @@
 {% extends 'enrol/base.html' %}
 {% block content %}
-<h3>{{course.name}} | {{course.year}} | Teacher:{{course.teacher}}</h3>
-<h4>Students & Grades:</h4>
+<h3>{{ course.name }} | {{ course.year }} | Teacher: {{ course.teacher }}</h3>
+
+<h4>Enrolled Students:</h4>
 <ul>
 {% for g in grades %}
-<li>{{g.student.username}} : {{g.grade}}</li>
+  <li>
+    {{ g.student.username }}
+    {% if user.is_staff %}
+      : {{ g.grade }}
+    {% endif %}
+  </li>
 {% endfor %}
 </ul>
 {% endblock %}

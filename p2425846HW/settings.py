@@ -123,3 +123,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# ========== HW2: Auth redirect settings ==========
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/enrol/'
+LOGOUT_REDIRECT_URL = '/enrol/'

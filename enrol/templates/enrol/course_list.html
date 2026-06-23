@@ -3,7 +3,11 @@
 <h3>All Courses</h3>
 <ul>
 {% for c in courses %}
-<li><a href="{% url 'course_detail' c.pk %}">{{c.name}} - {{c.year}}</a></li>
+  {% if user.is_authenticated %}
+    <li><a href="{% url 'course_detail' c.pk %}">{{ c.name }} - {{ c.year }}</a></li>
+  {% else %}
+    <li>{{ c.name }} - {{ c.year }}</li>
+  {% endif %}
 {% endfor %}
 </ul>
 {% endblock %}

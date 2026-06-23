@@ -1,9 +1,17 @@
 {% extends 'enrol/base.html' %}
 {% block content %}
-<h3>Students(start with p)</h3>
+<h3>All Students (username starts with "p")</h3>
+
+<form method="get" style="margin-bottom: 16px;">
+  <input type="text" name="q" placeholder="Search student..." value="{{ query }}">
+  <button type="submit">Search</button>
+</form>
+
 <ul>
 {% for s in students %}
-<li><a href="{% url 'student_detail' s.pk %}">{{s.username}}</a></li>
+  <li><a href="{% url 'student_detail' s.pk %}">{{ s.username }}</a></li>
+{% empty %}
+  <li>No students found.</li>
 {% endfor %}
 </ul>
 {% endblock %}
